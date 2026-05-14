@@ -1,0 +1,5 @@
++.telegram.org
++.telegram.me
++.t.me
++.tdesktop.com
++.telesco.pe

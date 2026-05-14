@@ -1,0 +1,5 @@
++.steampowered.com
++.steamcommunity.com
++.steamstatic.com
++.steamcdn-a.akamaihd.net
++.steam-chat.com

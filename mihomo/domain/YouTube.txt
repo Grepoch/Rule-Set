@@ -1,0 +1,7 @@
++.youtube.com
++.youtu.be
++.ytimg.com
++.yt.be
++.googlevideo.com
++.youtube-nocookie.com
++.youtube-ui.l.google.com

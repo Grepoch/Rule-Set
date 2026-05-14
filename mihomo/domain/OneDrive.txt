@@ -1,0 +1,6 @@
++.1drv.com
++.1drv.ms
++.onedrive.com
++.onedrive.live.com
++.sharepoint.com
++.storage.live.com

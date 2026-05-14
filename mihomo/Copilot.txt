@@ -1,0 +1,6 @@
+DOMAIN,api.githubcopilot.com
+DOMAIN,api.individual.githubcopilot.com
+DOMAIN,copilot-proxy.githubusercontent.com
+DOMAIN,copilot.microsoft.com
+DOMAIN,sydney.bing.com
+DOMAIN-KEYWORD,cocopilot

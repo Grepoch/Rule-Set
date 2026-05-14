@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - 'mihomo/**/*.list'
+      - 'mihomo/domain/*.txt'
       - '.github/workflows/compile-mrs.yml'
   workflow_dispatch:
 
@@ -25,12 +25,11 @@ jobs:
           gunzip mihomo.gz
           chmod +x mihomo
 
-      - name: Compile .list to .mrs
+      - name: Compile domain rules to mrs
         run: |
-          find mihomo -name "*.list" | while read f; do
-            dir=$(dirname "$f")
-            name=$(basename "$f" .list)
-            output="${dir}/${name}.mrs"
+          for f in mihomo/domain/*.txt; do
+            name=$(basename "$f" .txt)
+            output="mihomo/domain/${name}.mrs"
             echo "Compiling $f -> $output"
             ./mihomo convert-ruleset domain text "$f" "$output"
           done
@@ -39,10 +38,10 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add mihomo/**/*.mrs
+          git add mihomo/domain/*.mrs
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "chore: auto-compile mrs files [skip ci]"
+            git commit -m "chore: auto-compile mrs [skip ci]"
             git push
           fi

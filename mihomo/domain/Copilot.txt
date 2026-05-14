@@ -1,0 +1,6 @@
+api.githubcopilot.com
+api.individual.githubcopilot.com
+copilot-proxy.githubusercontent.com
+copilot.microsoft.com
+sydney.bing.com
+keyword:cocopilot

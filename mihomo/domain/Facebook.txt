@@ -1,0 +1,7 @@
++.facebook.com
++.facebook.net
++.fb.com
++.fb.me
++.fbcdn.net
++.fbsbx.com
++.messenger.com

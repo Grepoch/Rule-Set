@@ -1,0 +1,4 @@
++.spotify.com
++.spotifycdn.com
++.scdn.co
++.spotify.design

@@ -1,0 +1,12 @@
++.openai.com
++.chatgpt.com
++.sora.com
++.oaistatic.com
++.oaiusercontent.com
++.openaiapi-site.azureedge.net
++.openaicom.imgix.net
++.chatgpt.livekit.cloud
++.host.livekit.cloud
++.turn.livekit.cloud
+keyword:openaicom-api
+chat.openai.com.cdn.cloudflare.net

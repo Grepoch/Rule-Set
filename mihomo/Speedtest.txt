@@ -1,0 +1,4 @@
+DOMAIN-SUFFIX,speedtest.net
+DOMAIN-SUFFIX,speedtestcustom.com
+DOMAIN-SUFFIX,ooklaserver.net
+DOMAIN-SUFFIX,fast.com

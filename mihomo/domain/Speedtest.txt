@@ -1,0 +1,4 @@
++.speedtest.net
++.speedtestcustom.com
++.ooklaserver.net
++.fast.com

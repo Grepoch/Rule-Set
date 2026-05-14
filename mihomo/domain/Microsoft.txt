@@ -1,0 +1,10 @@
++.microsoft.com
++.microsoftonline.com
++.msn.com
++.office.com
++.office.net
++.office365.com
++.outlook.com
++.live.com
++.windows.net
++.azure.com
