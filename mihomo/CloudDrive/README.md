@@ -23,7 +23,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
-    url: "https://raw.githubusercontent.com/Grepoch/clash-rules/main/mihomo/CloudDrive/CloudDrive-Site.mrs"
+    url: "https://raw.githubusercontent.com/Grepoch/Rule-Set/main/mihomo/CloudDrive/CloudDrive-Site.mrs"
     path: ./ruleset/CloudDrive-Site.mrs
     proxy: DIRECT
     interval: 86400

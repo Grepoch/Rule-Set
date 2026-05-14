@@ -24,7 +24,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
-    url: "https://raw.githubusercontent.com/Grepoch/clash-rules/main/mihomo/SocialMedia/SocialMedia-Site.mrs"
+    url: "https://raw.githubusercontent.com/Grepoch/Rule-Set/main/mihomo/SocialMedia/SocialMedia-Site.mrs"
     path: ./ruleset/SocialMedia-Site.mrs
     proxy: DIRECT
     interval: 86400

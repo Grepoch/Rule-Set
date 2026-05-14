@@ -23,7 +23,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
-    url: "https://raw.githubusercontent.com/Grepoch/clash-rules/main/mihomo/AI/AI-Site.mrs"
+    url: "https://raw.githubusercontent.com/Grepoch/Rule-Set/main/mihomo/AI/AI-Site.mrs"
     path: ./ruleset/AI-Site.mrs
     proxy: DIRECT
     interval: 86400
