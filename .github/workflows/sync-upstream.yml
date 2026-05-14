@@ -1,0 +1,85 @@
+name: Sync Upstream Rules
+
+on:
+  schedule:
+    # 每天 UTC 02:00 运行（北京时间 10:00）
+    - cron: '0 2 * * *'
+  workflow_dispatch:  # 支持手动触发
+  push:
+    paths:
+      - '.github/workflows/sync-upstream.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  sync-hosheapdnx:
+    name: Sync HosheaPDNX/rule-set
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout this repo
+        uses: actions/checkout@v4
+
+      - name: Get latest tag from upstream
+        id: upstream
+        run: |
+          LATEST_TAG=$(curl -s https://api.github.com/repos/HosheaPDNX/rule-set/tags | jq -r '.[0].name')
+          echo "Latest upstream tag: $LATEST_TAG"
+          echo "tag=$LATEST_TAG" >> $GITHUB_OUTPUT
+
+      - name: Read current synced version
+        id: current
+        run: |
+          if [ -f upstream/HosheaPDNX/VERSION ]; then
+            CURRENT=$(cat upstream/HosheaPDNX/VERSION)
+          else
+            CURRENT="none"
+          fi
+          echo "Current synced version: $CURRENT"
+          echo "version=$CURRENT" >> $GITHUB_OUTPUT
+
+      - name: Skip if already up to date
+        if: steps.upstream.outputs.tag == steps.current.outputs.version
+        run: |
+          echo "Already up to date with ${{ steps.upstream.outputs.tag }}"
+
+      - name: Download upstream rule-set
+        if: steps.upstream.outputs.tag != steps.current.outputs.version
+        run: |
+          UPSTREAM_TAG="${{ steps.upstream.outputs.tag }}"
+          mkdir -p upstream/HosheaPDNX
+          
+          # Clone upstream at specific tag
+          git clone --depth 1 --branch "$UPSTREAM_TAG" https://github.com/HosheaPDNX/rule-set.git /tmp/upstream
+          
+          # Clean old upstream files (keep VERSION marker)
+          rm -rf upstream/HosheaPDNX/mihomo
+          rm -rf upstream/HosheaPDNX/sing-box
+          rm -rf upstream/HosheaPDNX/Shadowrocket
+          
+          # Copy mihomo and sing-box (skip Shadowrocket if you don't need it)
+          cp -r /tmp/upstream/mihomo upstream/HosheaPDNX/
+          cp -r /tmp/upstream/sing-box upstream/HosheaPDNX/
+          
+          # Copy LICENSE and README from upstream
+          [ -f /tmp/upstream/LICENSE ] && cp /tmp/upstream/LICENSE upstream/HosheaPDNX/UPSTREAM_LICENSE
+          [ -f /tmp/upstream/README.md ] && cp /tmp/upstream/README.md upstream/HosheaPDNX/UPSTREAM_README.md
+          
+          # Record version
+          echo "$UPSTREAM_TAG" > upstream/HosheaPDNX/VERSION
+          
+          # Cleanup temp
+          rm -rf /tmp/upstream
+
+      - name: Commit and push
+        if: steps.upstream.outputs.tag != steps.current.outputs.version
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add upstream/
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: sync HosheaPDNX/rule-set ${{ steps.upstream.outputs.tag }}"
+            git push
+          fi
