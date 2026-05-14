@@ -1,0 +1,116 @@
+# =============================================
+# Social Media Rules
+# =============================================
+# Behavior: domain
+# Format: text
+# Description: 社交媒体与即时通讯（X/Reddit/Discord/Telegram 等）
+# Updated: 2026-05-14
+# =============================================
+
+# === X (Twitter) ===
+DOMAIN-SUFFIX,twitter.com
+DOMAIN-SUFFIX,x.com
+DOMAIN-SUFFIX,twimg.com
+DOMAIN-SUFFIX,t.co
+DOMAIN-SUFFIX,twttr.com
+
+# === Meta / Facebook / Instagram / Threads ===
+DOMAIN-SUFFIX,facebook.com
+DOMAIN-SUFFIX,facebook.net
+DOMAIN-SUFFIX,fb.com
+DOMAIN-SUFFIX,fb.me
+DOMAIN-SUFFIX,fbcdn.net
+DOMAIN-SUFFIX,fbsbx.com
+DOMAIN-SUFFIX,messenger.com
+DOMAIN-SUFFIX,instagram.com
+DOMAIN-SUFFIX,cdninstagram.com
+DOMAIN-SUFFIX,threads.net
+DOMAIN-SUFFIX,meta.com
+
+# === Reddit ===
+DOMAIN-SUFFIX,reddit.com
+DOMAIN-SUFFIX,redd.it
+DOMAIN-SUFFIX,redditmedia.com
+DOMAIN-SUFFIX,redditstatic.com
+
+# === Discord ===
+DOMAIN-SUFFIX,discord.com
+DOMAIN-SUFFIX,discordapp.com
+DOMAIN-SUFFIX,discordapp.net
+DOMAIN-SUFFIX,discord.gg
+DOMAIN-SUFFIX,discord.media
+DOMAIN-SUFFIX,discordcdn.com
+
+# === Telegram ===
+DOMAIN-SUFFIX,telegram.org
+DOMAIN-SUFFIX,telegram.me
+DOMAIN-SUFFIX,t.me
+DOMAIN-SUFFIX,tdesktop.com
+DOMAIN-SUFFIX,telesco.pe
+
+# === WhatsApp ===
+DOMAIN-SUFFIX,whatsapp.com
+DOMAIN-SUFFIX,whatsapp.net
+DOMAIN-SUFFIX,wa.me
+
+# === Signal ===
+DOMAIN-SUFFIX,signal.org
+DOMAIN-SUFFIX,signalusercontent.com
+
+# === LINE ===
+DOMAIN-SUFFIX,line.me
+DOMAIN-SUFFIX,line-apps.com
+DOMAIN-SUFFIX,line-cdn.net
+DOMAIN-SUFFIX,line-scdn.net
+DOMAIN-SUFFIX,naver.jp
+
+# === Viber ===
+DOMAIN-SUFFIX,viber.com
+
+# === Snapchat ===
+DOMAIN-SUFFIX,snapchat.com
+DOMAIN-SUFFIX,snap.com
+DOMAIN-SUFFIX,snapkit.co
+DOMAIN-SUFFIX,bitmoji.com
+DOMAIN-SUFFIX,sc-cdn.net
+
+# === Twitch ===
+DOMAIN-SUFFIX,twitch.tv
+DOMAIN-SUFFIX,ttvnw.net
+DOMAIN-SUFFIX,jtvnw.net
+DOMAIN-SUFFIX,twitchcdn.net
+
+# === LinkedIn ===
+DOMAIN-SUFFIX,linkedin.com
+DOMAIN-SUFFIX,licdn.com
+
+# === Slack ===
+DOMAIN-SUFFIX,slack.com
+DOMAIN-SUFFIX,slack-edge.com
+DOMAIN-SUFFIX,slack-msgs.com
+DOMAIN-SUFFIX,slackb.com
+
+# === Pinterest ===
+DOMAIN-SUFFIX,pinterest.com
+DOMAIN-SUFFIX,pinimg.com
+
+# === Tumblr ===
+DOMAIN-SUFFIX,tumblr.com
+
+# === Skype ===
+DOMAIN-SUFFIX,skype.com
+DOMAIN-SUFFIX,skypeforlinux.com
+DOMAIN-SUFFIX,skypeassets.com
+
+# === Mastodon ===
+DOMAIN-KEYWORD,mastodon
+DOMAIN-SUFFIX,mastodon.social
+DOMAIN-SUFFIX,mastodon.online
+
+# === Clubhouse ===
+DOMAIN-SUFFIX,clubhouse.com
+DOMAIN-SUFFIX,joinclubhouse.com
+
+# === Bluesky ===
+DOMAIN-SUFFIX,bsky.app
+DOMAIN-SUFFIX,bsky.social

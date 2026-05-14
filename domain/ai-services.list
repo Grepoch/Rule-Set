@@ -1,0 +1,79 @@
+# =============================================
+# AI Services Rules
+# =============================================
+# Behavior: domain
+# Format: text
+# Description: AI 服务相关域名（Claude/ChatGPT/Gemini/Copilot 等）
+# Updated: 2026-05-14
+# =============================================
+
+# === Anthropic / Claude ===
+DOMAIN-SUFFIX,anthropic.com
+DOMAIN-SUFFIX,claude.ai
+DOMAIN-SUFFIX,claudeusercontent.com
+
+# === OpenAI / ChatGPT / Sora ===
+DOMAIN-SUFFIX,openai.com
+DOMAIN-SUFFIX,chatgpt.com
+DOMAIN-SUFFIX,sora.com
+DOMAIN-SUFFIX,oaistatic.com
+DOMAIN-SUFFIX,oaiusercontent.com
+DOMAIN-SUFFIX,openaiapi-site.azureedge.net
+DOMAIN-SUFFIX,openaicom.imgix.net
+DOMAIN-SUFFIX,chatgpt.livekit.cloud
+DOMAIN-SUFFIX,host.livekit.cloud
+DOMAIN-SUFFIX,turn.livekit.cloud
+DOMAIN-KEYWORD,openaicom-api
+DOMAIN,chat.openai.com.cdn.cloudflare.net
+
+# === Google AI / Gemini ===
+DOMAIN,gemini.google.com
+DOMAIN,bard.google.com
+DOMAIN,ai.google.dev
+DOMAIN,deepmind.google
+DOMAIN-SUFFIX,deepmind.com
+DOMAIN-SUFFIX,aistudio.google.com
+DOMAIN-SUFFIX,generativelanguage.googleapis.com
+
+# === GitHub Copilot ===
+DOMAIN,api.githubcopilot.com
+DOMAIN,api.individual.githubcopilot.com
+DOMAIN,copilot-proxy.githubusercontent.com
+DOMAIN-KEYWORD,cocopilot
+
+# === Microsoft Copilot ===
+DOMAIN,copilot.microsoft.com
+DOMAIN,sydney.bing.com
+
+# === 其他 AI 平台 ===
+DOMAIN-SUFFIX,perplexity.ai
+DOMAIN-SUFFIX,poe.com
+DOMAIN-SUFFIX,midjourney.com
+DOMAIN-SUFFIX,civitai.com
+DOMAIN-SUFFIX,huggingface.co
+DOMAIN-SUFFIX,replicate.com
+DOMAIN-SUFFIX,stability.ai
+DOMAIN-SUFFIX,runwayml.com
+DOMAIN-SUFFIX,suno.com
+DOMAIN-SUFFIX,suno.ai
+DOMAIN-SUFFIX,elevenlabs.io
+DOMAIN-SUFFIX,character.ai
+DOMAIN-SUFFIX,kimi.com
+DOMAIN-SUFFIX,you.com
+
+# === AI 服务依赖（鉴权/CDN/统计） ===
+DOMAIN-SUFFIX,auth0.com
+DOMAIN-SUFFIX,challenges.cloudflare.com
+DOMAIN-SUFFIX,client-api.arkoselabs.com
+DOMAIN-SUFFIX,events.statsigapi.net
+DOMAIN-SUFFIX,featuregates.org
+DOMAIN-SUFFIX,identrust.com
+DOMAIN-SUFFIX,intercom.io
+DOMAIN-SUFFIX,intercomcdn.com
+DOMAIN-SUFFIX,statsigapi.net
+DOMAIN-SUFFIX,sentry.io
+DOMAIN-SUFFIX,launchdarkly.com
+DOMAIN-SUFFIX,segment.io
+DOMAIN-SUFFIX,algolia.net
+DOMAIN-SUFFIX,stripe.com
+DOMAIN,api.statsig.com
