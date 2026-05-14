@@ -1,0 +1,61 @@
+{
+  "version": 1,
+  "rules": [
+    {
+      "domain": [
+        "www.googleapis.com",
+        "drive.googleapis.com",
+        "content.googleapis.com",
+        "storage.googleapis.com",
+        "drivefrontend-pa.googleapis.com",
+        "signaler-pa.googleapis.com",
+        "driveactivity-pa.googleapis.com",
+        "drivesdk-pa.googleapis.com",
+        "clients4.google.com",
+        "clients6.google.com",
+        "docs.googleapis.com",
+        "sheets.googleapis.com",
+        "slides.googleapis.com",
+        "uploadcontent-pa.googleapis.com",
+        "upload.video.google.com",
+        "photosdata-pa.googleapis.com"
+      ],
+      "domain_suffix": [
+        "drive.google.com",
+        "drive-thirdparty.googleusercontent.com",
+        "googledrive.com",
+        "docs.google.com",
+        "sheets.google.com",
+        "slides.google.com",
+        "googleusercontent.com",
+        "photos.google.com",
+        "1drv.com",
+        "1drv.ms",
+        "onedrive.com",
+        "onedrive.live.com",
+        "sharepoint.com",
+        "storage.live.com",
+        "dropbox.com",
+        "dropboxapi.com",
+        "dropboxstatic.com",
+        "dropboxusercontent.com",
+        "mega.co.nz",
+        "mega.io",
+        "mega.nz",
+        "megaup.net",
+        "icloud.com",
+        "icloud-content.com",
+        "me.com",
+        "box.com",
+        "boxcloud.com",
+        "mediafire.com",
+        "4shared.com",
+        "sendspace.com",
+        "wetransfer.com",
+        "we.tl",
+        "pcloud.com",
+        "sync.com"
+      ]
+    }
+  ]
+}

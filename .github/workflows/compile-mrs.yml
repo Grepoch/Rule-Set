@@ -4,8 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - 'domain/**'
-      - 'ipcidr/**'
+      - 'mihomo/**/*.list'
       - '.github/workflows/compile-mrs.yml'
   workflow_dispatch:
 
@@ -26,34 +25,21 @@ jobs:
           gunzip mihomo.gz
           chmod +x mihomo
 
-      - name: Compile domain rules to mrs
+      - name: Compile .list to .mrs
         run: |
-          mkdir -p mrs
-          for f in domain/*.list; do
-            if [ -f "$f" ]; then
-              name=$(basename "$f" .list)
-              echo "Compiling $f -> mrs/$name.mrs"
-              ./mihomo convert-ruleset domain text "$f" "mrs/$name.mrs"
-            fi
+          find mihomo -name "*.list" | while read f; do
+            dir=$(dirname "$f")
+            name=$(basename "$f" .list)
+            output="${dir}/${name}.mrs"
+            echo "Compiling $f -> $output"
+            ./mihomo convert-ruleset domain text "$f" "$output"
           done
-
-      - name: Compile ipcidr rules to mrs
-        run: |
-          if [ -d "ipcidr" ]; then
-            for f in ipcidr/*.list; do
-              if [ -f "$f" ]; then
-                name=$(basename "$f" .list)
-                echo "Compiling $f -> mrs/$name.mrs"
-                ./mihomo convert-ruleset ipcidr text "$f" "mrs/$name.mrs"
-              fi
-            done
-          fi
 
       - name: Commit and push
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add mrs/
+          git add mihomo/**/*.mrs
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
