@@ -1,0 +1,107 @@
+name: Check Upstream Updates
+
+on:
+  schedule:
+    # 每周一 UTC 02:00（北京时间 10:00）检查一次
+    - cron: '0 2 * * 1'
+  workflow_dispatch:  # 支持手动触发
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Get upstream latest tag
+        id: upstream
+        run: |
+          LATEST=$(curl -s https://api.github.com/repos/HosheaPDNX/rule-set/tags | jq -r '.[0].name')
+          echo "Latest upstream tag: $LATEST"
+          echo "tag=$LATEST" >> $GITHUB_OUTPUT
+
+      - name: Read local tracked version
+        id: local
+        run: |
+          if [ -f .upstream-version ]; then
+            CURRENT=$(cat .upstream-version)
+          else
+            CURRENT="none"
+          fi
+          echo "Current tracked version: $CURRENT"
+          echo "version=$CURRENT" >> $GITHUB_OUTPUT
+
+      - name: Skip if already up to date
+        if: steps.upstream.outputs.tag == steps.local.outputs.version
+        run: echo "Already up to date with ${{ steps.upstream.outputs.tag }}, skipping."
+
+      - name: Create notification issue
+        if: steps.upstream.outputs.tag != steps.local.outputs.version
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const oldVer = '${{ steps.local.outputs.version }}';
+            const newVer = '${{ steps.upstream.outputs.tag }}';
+            const repoUrl = 'https://github.com/HosheaPDNX/rule-set';
+            const compareUrl = oldVer !== 'none'
+              ? `${repoUrl}/compare/${oldVer}...${newVer}`
+              : `${repoUrl}/releases/tag/${newVer}`;
+
+            // Check if an issue for this version already exists
+            const existingIssues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'upstream-update'
+            });
+
+            const alreadyExists = existingIssues.data.some(
+              issue => issue.title.includes(newVer)
+            );
+
+            if (alreadyExists) {
+              console.log(`Issue for ${newVer} already exists, skipping.`);
+              return;
+            }
+
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `⬆️ 上游更新: HosheaPDNX/rule-set ${newVer}`,
+              body: [
+                `## 上游规则集有新版本`,
+                ``,
+                `| 项目 | 值 |`,
+                `|------|------|`,
+                `| 上游仓库 | [HosheaPDNX/rule-set](${repoUrl}) |`,
+                `| 当前跟踪版本 | \`${oldVer}\` |`,
+                `| 最新版本 | \`${newVer}\` |`,
+                `| 变更对比 | [查看 diff](${compareUrl}) |`,
+                ``,
+                `## 审核步骤`,
+                ``,
+                `1. 点击上方 **变更对比** 链接查看上游改了什么`,
+                `2. 重点关注 \`mihomo/\` 目录下的 \`.yaml\` 文件变更`,
+                `3. 如果有你需要的规则更新，手动复制到 \`domain/\` 目录的对应 \`.list\` 文件`,
+                `4. 更新 \`.upstream-version\` 文件内容为 \`${newVer}\``,
+                `5. 提交并推送`,
+                `6. 关闭此 Issue`,
+                ``,
+                `## 快速命令`,
+                ``,
+                '```bash',
+                `# 查看上游某个规则集的内容（以 AI 为例）`,
+                `curl -s "https://raw.githubusercontent.com/HosheaPDNX/rule-set/${newVer}/mihomo/AI/AI-Site.yaml"`,
+                ``,
+                `# 更新版本标记`,
+                `echo "${newVer}" > .upstream-version`,
+                `git add . && git commit -m "chore: track upstream ${newVer}" && git push`,
+                '```',
+              ].join('\n'),
+              labels: ['upstream-update']
+            });
+
+            console.log(`Created issue for upstream update ${newVer}`);
